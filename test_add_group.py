@@ -10,7 +10,7 @@ import unittest, time, re
 
 class TestAddGroup(unittest.TestCase):
     def setUp(self):
-        self.wd = webdriver.Chrome()
+        self.wd = webdriver.Chrome("D:\\Projects\\chromedriver.exe")
         self.wd.implicitly_wait(30)
 
     def test_add_group(self):
