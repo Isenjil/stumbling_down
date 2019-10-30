@@ -5,6 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
+from group import Group
 import unittest
 
 
@@ -18,7 +19,7 @@ class TestAddGroup(unittest.TestCase):
         self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.open_groups_page(wd)
-        self.add_new_group(wd, name="Nothing", header="Something from Budha", footer="No environment at all")
+        self.add_new_group(wd, Group(name="Nothing", header="Something from Budha", footer="No environment at all"))
         self.submit_form(wd)
         self.return_to_groups(wd)
         self.logout(wd)
@@ -28,11 +29,11 @@ class TestAddGroup(unittest.TestCase):
         self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.open_groups_page(wd)
-        self.add_new_group(wd, name="", header="", footer="")
+        self.add_new_group(wd, Group(name="", header="", footer=""))
         self.submit_form(wd)
         self.return_to_groups(wd)
         self.logout(wd)
-        
+
     def logout(self, wd):
        wd.find_element_by_link_text("Logout").click()
 
@@ -42,19 +43,19 @@ class TestAddGroup(unittest.TestCase):
     def submit_form(self, wd):
         wd.find_element_by_name("submit").click()
 
-    def add_new_group(self, wd, name, header, footer):
+    def add_new_group(self, wd, group):
         wd.find_element_by_link_text("home").click()
         wd.find_element_by_link_text("groups").click()
         wd.find_element_by_name("new").click()
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys(name)
+        wd.find_element_by_name("group_name").send_keys(group.name)
         wd.find_element_by_xpath("//body").click()
         wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys(header)
+        wd.find_element_by_name("group_header").send_keys(group.header)
         wd.find_element_by_name("group_footer").click()
         wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys(footer)
+        wd.find_element_by_name("group_footer").send_keys(group.footer)
 
     def open_groups_page(self, wd):
         wd.find_element_by_link_text("add new").click()
