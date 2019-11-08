@@ -11,7 +11,7 @@ class App:
         self.group = GroupHelper(self)
 
     def open_home_page(self):
-        wd = self.app.wd
+        wd = self.wd
         wd.get("http://localhost/addressbook/")
 
     def destr(self):
