@@ -12,14 +12,14 @@ def appl(request):
 
 
 def test_add_empty_group(appl):
-    appl.login(username="admin", password="secret")
+    appl.session.login(username="admin", password="secret")
     appl.add_new_group(Group(name="", header="", footer=""))
-    appl.logout()
+    appl.session.logout()
 
 
 def test_add_group(appl):
-    appl.login(username="admin", password="secret")
+    appl.session.login(username="admin", password="secret")
     appl.add_new_group(Group(name="Nothing", header="Something from Budha", footer="No environment at all"))
-    appl.logout()
+    appl.session.logout()
 
 
