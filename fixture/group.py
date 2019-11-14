@@ -37,5 +37,3 @@ class GroupHelper:
         wd.find_element_by_name("selected[]").click()
         # delete first group
         wd.find_element_by_name("delete").click()
-
-

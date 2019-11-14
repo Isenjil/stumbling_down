@@ -2,7 +2,7 @@
 from fixture.app import App
 import pytest
 
-@pytest.fixture
+@pytest.fixture(scope = "session")
 def appl(request):
     fixture = App()
     request.addfinalizer(fixture.destr)
