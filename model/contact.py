@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.support.ui import Select
 
+
 class ContactHelper:
 
     def __init__(self, app):
@@ -61,15 +62,14 @@ class ContactHelper:
     def modify_contact(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[4]/td[3]").click()
-        wd.find_element_by_xpath("(//img[@alt='Edit'])[3]").click()
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
         wd.find_element_by_xpath("//div[@id='content']/form").click()
         wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys("Nothing")
+        wd.find_element_by_name("firstname").send_keys("Yarik")
         wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys("selfharm")
+        wd.find_element_by_name("middlename").send_keys("Kamon")
         wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys("Ajaherisa")
+        wd.find_element_by_name("lastname").send_keys("Sokolovsky")
         wd.find_element_by_xpath("//div[@id='content']/form").click()
         wd.find_element_by_xpath("(//input[@name='update'])[2]").click()
         wd.find_element_by_link_text("home page").click()
-
