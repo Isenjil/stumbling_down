@@ -11,3 +11,8 @@ def test_delete_contact(appl):
     appl.session.login(username="admin", password="secret")
     appl.contact.delete_first_contact()
     appl.session.logout()
+
+def test_modify_contact(appl):
+    appl.session.login(username="admin", password="secret")
+    appl.contact.modify_contact()
+    appl.session.logout()
